@@ -2,9 +2,7 @@
 
 class Application_Model_DbTable_Albums extends Zend_Db_Table_Abstract
 {
-
     protected $_name = 'albums';
-
     public function getAlbum($id)
     {
         $id = (int)$id;
@@ -30,10 +28,8 @@ class Application_Model_DbTable_Albums extends Zend_Db_Table_Abstract
         );
         $this->update($data, 'id = '. (int)$id);
     }
-
     public function deleteAlbum($id)
     {
         $this->delete('id =' . (int)$id);
     }
-
 }
