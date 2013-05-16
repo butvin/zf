@@ -49,3 +49,15 @@ header {
     height: 100px;
     background: #eee;
 }
+
+nav ol li {
+    list-style: none;
+    float: left;
+    padding-left: 10px;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background: #eee;
+}

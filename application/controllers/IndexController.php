@@ -2,7 +2,6 @@
 
 class IndexController extends Zend_Controller_Action
 {
-
     public function init()
     {
         /* Initialize action controller here */
@@ -12,6 +11,7 @@ class IndexController extends Zend_Controller_Action
     {
         $albums = new Application_Model_DbTable_Albums();
         $this->view->albums = $albums->fetchAll();
+        //print_r($this->view->getScriptPaths(null)[0]);
     }
 
     public function addAction()
@@ -78,13 +78,4 @@ class IndexController extends Zend_Controller_Action
             $this->view->album = $albums->getAlbum($id);
         }
     }
-
-
 }
-
-
-
-
-
-
-
