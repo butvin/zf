@@ -12,7 +12,7 @@ echo $this->doctype(); ?>
 <body>
 <header>
     <nav>
-        <ol>
+        <ol id="main-menu">
             <li><a href="<?php echo $this->serverUrl(); ?>">Home</a> </li>
 <!--            <li><a href="--><?php //echo $this->url(array()); ?><!--">Home</a> </li>-->
             <li><a href="<?php echo $this->url(array('page' => 'services'), 'static-content'); ?>">Services</a> </li>

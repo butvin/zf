@@ -1,5 +1,6 @@
 body,html {
     margin: 0;
+    padding: 0;
     font-family: Verdana,sans-serif;
 }
 h1 {
@@ -51,13 +52,24 @@ header {
 }
 
 nav ol li {
-    list-style: none;
-    float: left;
-    padding-left: 10px;
+  
 }
+
+
 
 footer {
     width: 100%;
     height: 100px;
     background: #eee;
+}
+div#content {
+    background: #e9f1f6;
+}
+div#contact-form {
+    background: rgba(166, 199, 27, 0.23);
+    display: table;
+    border: 1px solid #008000;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
