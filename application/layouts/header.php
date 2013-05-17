@@ -17,7 +17,7 @@ echo $this->doctype(); ?>
 <!--            <li><a href="--><?php //echo $this->url(array()); ?><!--">Home</a> </li>-->
             <li><a href="<?php echo $this->url(array('page' => 'services'), 'static-content'); ?>">Services</a> </li>
             <li><a href="<?php echo $this->url(array('page' => 'about-us'), 'static-content'); ?>">About us</a> </li>
-            <li><a href="#">Contact</a> </li>
+            <li><a href="<?php echo $this->url(array(), 'contact'); ?>">Contact</a> </li>
         </ol>
     </nav>
 </header>
