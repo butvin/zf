@@ -20,11 +20,11 @@ $this->headTitle($this->title);
     <?php endforeach; ?>
 </table>
 
-    <p><a href="<?php echo $this->url(array('controller'=>'index',
-            'action'=>'add'));?>">Add new album</a></p> <br />
+    <p><a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'add'));?>">Add new album</a></p> <br />
+
 <?php
-$db = mysql_connect ("localhost", "root", "qweqwe");
-if ($db == true) {
-    echo 'True';
-} else echo 'False';
-?>
+//$db = mysql_connect ("localhost", "root", "qweqwe");
+//if ($db == true) {
+//    echo 'True';
+//} else echo 'False';
+//?>

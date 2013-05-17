@@ -13,10 +13,11 @@ echo $this->doctype(); ?>
 <header>
     <nav>
         <ol>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
-            <li>Four</li>
+            <li><a href="<?php echo $this->serverUrl(); ?>">Home</a> </li>
+<!--            <li><a href="--><?php //echo $this->url(array()); ?><!--">Home</a> </li>-->
+            <li><a href="<?php echo $this->url(array('page' => 'services'), 'static-content'); ?>">Services</a> </li>
+            <li><a href="<?php echo $this->url(array('page' => 'about-us'), 'static-content'); ?>">About us</a> </li>
+            <li><a href="#">Contact</a> </li>
         </ol>
     </nav>
 </header>
