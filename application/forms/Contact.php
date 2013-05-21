@@ -1,5 +1,9 @@
 <?php
 class Application_Form_Contact extends Zend_Form {
+    public $elementDecorators = array(
+        array('ViewHelper'),
+        array('HtmlTag', array('tag' => 'p'))
+    );
     public function init(){
         $this->setAction('/contact/index')
             ->setMethod('post');
@@ -29,7 +33,8 @@ class Application_Form_Contact extends Zend_Form {
             ->setRequired(true)
             ->addValidator('NotEmpty', true)
             ->addFilter('HtmlEntities')
-            ->addFilter('StringTrim');
+            ->addFilter('StringTrim')
+            ->setDecorators($this->elementDecorators);
 
 //        $captcha = new Zend_Form_Element_Captcha('captcha', array(
 //            'captcha' => array(
@@ -51,9 +56,13 @@ class Application_Form_Contact extends Zend_Form {
 
         $this->addElement($name)
             ->addElement($email)
-            ->addElement($message)
+            ->addElement($message);
 //            ->addElement($captcha)
-            ->addElement($submit);
+
+        $this->addDisplayGroup(array('name','email'), 'contact');
+        $this->getDisplayGroup('contact')->setLegend('Contact informations');
+
+        $this->addElement($submit);
     }
 
 }
