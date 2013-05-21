@@ -12,19 +12,21 @@ class Application_Model_DbTable_Albums extends Zend_Db_Table_Abstract
         }
         return $row->toArray();
     }
-    public function addAlbum($artist, $title)
+    public function addAlbum($artist, $title, $year)
     {
         $data = array(
             'artist' => $artist,
             'title' => $title,
+            'year' => $year,
         );
         $this->insert($data);
     }
-    public function updateAlbum($id, $artist, $title)
+    public function updateAlbum($id, $artist, $title, $year)
     {
         $data = array(
             'artist' => $artist,
             'title' => $title,
+            'year' => $year,
         );
         $this->update($data, 'id = '. (int)$id);
     }

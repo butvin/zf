@@ -27,8 +27,9 @@ class IndexController extends Zend_Controller_Action
             {
                 $artist = $form->getValue('artist');
                 $title = $form->getValue('title');
+                $year = $form->getValue('year');
                 $albums = new Application_Model_DbTable_Albums();
-                $albums->addAlbum($artist, $title);
+                $albums->addAlbum($artist, $title, $year);
                 $this->_helper->redirector('index');
             } else  {
                         $form->populate($formData);
@@ -47,8 +48,9 @@ class IndexController extends Zend_Controller_Action
                 $id = (int)$form->getValue('id');
                 $artist = $form->getValue('artist');
                 $title = $form->getValue('title');
+                $year = $form->getValue('year');
                 $albums = new Application_Model_DbTable_Albums();
-                $albums->updateAlbum($id, $artist, $title);
+                $albums->updateAlbum($id, $artist, $title, $year);
                 $this->_helper->redirector('index');
             } else {
                 $form->populate($formData);

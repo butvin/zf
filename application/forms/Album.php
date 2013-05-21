@@ -21,11 +21,17 @@ class Application_Form_Album extends Zend_Form
             ->addFilter('StringTrim')
             ->addValidator('NotEmpty');
 
+        $year = new Zend_Form_Element_Text('year');
+        $year->setLabel('Year')
+            ->addFilter('StripTags')
+            ->addFilter('StringTrim')
+            ->addValidator('Int');
+
         $submit = new Zend_Form_Element_Submit('submit');
 
         $submit->setAttrib('id', 'submitbutton');
 
-        $this->addElements(array($id, $artist, $title, $submit));
+        $this->addElements(array($id, $artist, $title, $year, $submit));
 
 
     }

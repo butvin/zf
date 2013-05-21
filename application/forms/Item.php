@@ -1,6 +1,6 @@
 <?php
 class Application_Form_Item extends Zend_Form {
-    public function init() {
+        public function init() {
         $this->setAction('/catalog/item/create')->setMethod('post');
 
         $name = new Zend_Form_Element_Text('SellerName');
