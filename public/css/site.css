@@ -71,3 +71,7 @@ div#contact-form {
     border: 1px solid #008000;
     padding: 10px;
 }
+
+#add-item {
+    display: table;
+}

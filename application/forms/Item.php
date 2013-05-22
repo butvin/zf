@@ -1,22 +1,25 @@
 <?php
 class Application_Form_Item extends Zend_Form {
         public function init() {
-        $this->setAction('/catalog/item/create')->setMethod('post');
+        $this
+//            ->setAction('/catalog/item/create')
+            ->setMethod('post')
+            ->setAttrib('id', 'add-item');
 
         $id = new Zend_Form_Element_Hidden('id');
         $id->addFilter('Int');
 
-        $name = new Zend_Form_Element_Text('SellerName');
+        $name = new Zend_Form_Element_Text('name');
         $name->setLabel('Name:')
             ->setOptions(array('size' => '35'))
             ->setRequired(true)
-            ->addValidator('Regex', false, array(
-                'pattern' => '/^[a-zA-Z]=[A-Za-z\'\-\.]{1.50}$/'
-            ))
+//            ->addValidator('Regex', false, array(
+//                'pattern' => '/^[a-zA-Z]=[A-Za-z\'\-\.]{1.50}$/'
+//            ))
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
 
-        $email = new Zend_Form_Element_Text('SellerEmail');
+        $email = new Zend_Form_Element_Text('email');
         $email->setLabel('Email address:');
         $email->setOptions(array('size'=>'50'))
             ->setRequired(true)
@@ -25,31 +28,31 @@ class Application_Form_Item extends Zend_Form {
             ->addFilter('StringTrim')
             ->addFilter('StringToLower');
 
-        $tel = new Zend_Form_Element_Text('SellerTel');
+        $tel = new Zend_Form_Element_Text('tel');
         $tel->setLabel('Telefone number:');
         $tel->setOptions(array('size'=>'50'))
             ->addValidator('StringLength', false, array('min'=>8))
-            ->addValidator('Regex', false, array(
-                'pattern' => '',
-                'messages' => array(
-                    Zend_Validete_Regex::INVALID =>
-                    '\'%value%\' does not match number format +XXYYZZZZ',
-                    Zend_Validete_Regex::NOT_MATCH =>
-                    '\'%value%\' does not match number format +XXYYZZZZ',
-                )
-            ))
-            ->addValidator('Int')
+//            ->addValidator('Regex', false, array(
+//                'pattern' => '',
+//                'messages' => array(
+//                    Zend_Validete_Regex::INVALID =>
+//                    '\'%value%\' does not match number format +XXYYZZZZ',
+//                    Zend_Validete_Regex::NOT_MATCH =>
+//                    '\'%value%\' does not match number format +XXYYZZZZ',
+//                )
+//            ))
+//            ->addValidator('Int')
             ->addFilter('HtmlEntities')
             ->AddFilter('StringTrim');
 
-        $title = new Zend_Form_Element_Text('Title');
+        $title = new Zend_Form_Element_Text('title');
         $title->setLabel('Title:')
             ->setOptions(array('size'=>'50'))
             ->setRequired(true)
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
 
-        $year = new Zend_Form_Element_Text('Year');
+        $year = new Zend_Form_Element_Text('year');
         $year->setLabel('Year:')
             ->setOptions(array('size' => '8', 'length' => '4'))
             ->setRequired(true)
@@ -71,7 +74,7 @@ class Application_Form_Item extends Zend_Form {
 //            $country->addMultiOption($c['CountryID'], $c['CountryName']);
 //        }
 
-        $denomination = new Zend_Form_Element_Text('Denomination');
+        $denomination = new Zend_Form_Element_Text('denomination');
         $denomination->setLabel('Denomination: ')
             ->setOptions(array('size'=>'8'))
             ->setRequired(true)
@@ -101,7 +104,7 @@ class Application_Form_Item extends Zend_Form {
 //            $grade->addMultiOption($g['GradeID'], $g['GradeName']);
 //        }
 
-        $priceMin = new Zend_Form_Element_Text('SalePriceMin');
+        $priceMin = new Zend_Form_Element_Text('priceMin');
         $priceMin->setLabel('Sale price (min):')
             ->setOptions(array('size'=>'8'))
             ->setRequired(true)
@@ -109,7 +112,7 @@ class Application_Form_Item extends Zend_Form {
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
 
-        $priceMax = new Zend_Form_Element_Text('SalePriceMax');
+        $priceMax = new Zend_Form_Element_Text('priceMax');
         $priceMax->setLabel('Sale price (max):')
             ->setOptions(array('size'=>'8'))
             ->setRequired(true)
@@ -117,7 +120,7 @@ class Application_Form_Item extends Zend_Form {
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
 
-        $notes = new Zend_Form_Element_Textarea('Description');
+        $notes = new Zend_Form_Element_Textarea('notes');
         $notes->setLabel('Descriptions:')
             ->setOptions(array('rows'=> '15', 'cols'=>'60'))
             ->setRequired(true)
@@ -135,7 +138,7 @@ class Application_Form_Item extends Zend_Form {
             ->addElement($tel);
 
         $this->addDisplayGroup(
-            array('SellerName', 'SellerEmail', 'SellerTel'), 'contact');
+            array('name', 'email', 'tel'), 'contact');
 
         $this->getDisplayGroup('contact')->setOrder(10)->setLegend('Seller info');
 
@@ -151,7 +154,7 @@ class Application_Form_Item extends Zend_Form {
             ->addElement($notes);
 
         $this->addDisplayGroup(array(
-            'Title', 'Year', 'Denomination', 'SalePriceMin', 'SalePriceMax', 'Description'), 'item');
+            'title', 'year', 'denomination', 'priceMin', 'priceMax', 'notes'), 'item');
 
         $this->getDisplayGroup('item')
             ->setOrder(20)
