@@ -3,6 +3,9 @@ class Application_Form_Item extends Zend_Form {
         public function init() {
         $this->setAction('/catalog/item/create')->setMethod('post');
 
+        $id = new Zend_Form_Element_Hidden('id');
+        $id->addFilter('Int');
+
         $name = new Zend_Form_Element_Text('SellerName');
         $name->setLabel('Name:')
             ->setOptions(array('size' => '35'))
@@ -35,6 +38,7 @@ class Application_Form_Item extends Zend_Form {
                     '\'%value%\' does not match number format +XXYYZZZZ',
                 )
             ))
+            ->addValidator('Int')
             ->addFilter('HtmlEntities')
             ->AddFilter('StringTrim');
 
@@ -53,18 +57,19 @@ class Application_Form_Item extends Zend_Form {
                 'min' => 1950, 'max' => 2013
             ))
             ->addFilter('HtmlEntities')
+            ->addValidator('Int')
             ->addFilter('StringTrim');
 
-        $country = new Zend_Form_Element_Select('CountryID');
-        $country->setLabel('Country:')
-            ->setRequired(true)
-            ->addValidator('Int')
-            ->addFilter('HtmlEntities')
-            ->addFilter('StringTrim')
-            ->addFilter('StringToUpper');
-        foreach ($this->getCountries() as $c) {
-            $country->addMultiOption($c['CountryID'], $c['CountryName']);
-        }
+//        $country = new Zend_Form_Element_Select('CountryID');
+//        $country->setLabel('Country:')
+//            ->setRequired(true)
+//            ->addValidator('Int')
+//            ->addFilter('HtmlEntities')
+//            ->addFilter('StringTrim')
+//            ->addFilter('StringToUpper');
+//        foreach ($this->getCountries() as $c) {
+//            $country->addMultiOption($c['CountryID'], $c['CountryName']);
+//        }
 
         $denomination = new Zend_Form_Element_Text('Denomination');
         $denomination->setLabel('Denomination: ')
@@ -74,27 +79,27 @@ class Application_Form_Item extends Zend_Form {
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
 
-        $type = new Zend_Form_Element_Radio('TypeID');
-        $type->setLabel('Type:')
-            ->setRequired(true)
-            ->addValidator('Int')
-            ->addFilter('HtmlEntities')
-            ->addFilter('StringTrim');
-        foreach ($this->getTypes() as $t) {
-            $type->addMultiOption($t['TypeID'], $t['TypeName']);
-        }
-        $type->setValue(1);
-
-        $grade = new Zend_Form_Element_Select('GradeID');
-        $grade->setLabel('Grade:')
-            ->setRequired(true)
-            ->addValidator('Int')
-            ->addFilter('HtmlEntities')
-            ->addFilter('StringTrim');
-
-        foreach ($this->getGrades() as $g) {
-            $grade->addMultiOption($g['GradeID'], $g['GradeName']);
-        }
+//        $type = new Zend_Form_Element_Radio('TypeID');
+//        $type->setLabel('Type:')
+//            ->setRequired(true)
+//            ->addValidator('Int')
+//            ->addFilter('HtmlEntities')
+//            ->addFilter('StringTrim');
+//        foreach ($this->getTypes() as $t) {
+//            $type->addMultiOption($t['TypeID'], $t['TypeName']);
+//        }
+//        $type->setValue(1);
+//
+//        $grade = new Zend_Form_Element_Select('GradeID');
+//        $grade->setLabel('Grade:')
+//            ->setRequired(true)
+//            ->addValidator('Int')
+//            ->addFilter('HtmlEntities')
+//            ->addFilter('StringTrim');
+//
+//        foreach ($this->getGrades() as $g) {
+//            $grade->addMultiOption($g['GradeID'], $g['GradeName']);
+//        }
 
         $priceMin = new Zend_Form_Element_Text('SalePriceMin');
         $priceMin->setLabel('Sale price (min):')
@@ -137,16 +142,16 @@ class Application_Form_Item extends Zend_Form {
 
         $this->addElement($title)
             ->addElement($year)
-            ->addElement($country)
-            ->addElement($denomination)
-            ->addElement($type)
-            ->addElement($grade)
+//            ->addElement($country)
+//            ->addElement($type)
+//            ->addElement($grade)
             ->addElement($priceMin)
             ->addElement($priceMax)
+            ->addElement($denomination)
             ->addElement($notes);
 
         $this->addDisplayGroup(array(
-            'Title', 'Year', 'CountryID', 'Denomination', 'TypeID', 'GradeID', 'SalePriceMin', 'SalePriceMax', 'Description'), 'item');
+            'Title', 'Year', 'Denomination', 'SalePriceMin', 'SalePriceMax', 'Description'), 'item');
 
         $this->getDisplayGroup('item')
             ->setOrder(20)
@@ -155,14 +160,14 @@ class Application_Form_Item extends Zend_Form {
         $this->addElement($submit);
     }
 
-        public function getCountries() {
-            //
-        }
-        public function getGrades() {
-            //
-        }
-        public function getTypes() {
-            //
-        }
+//        public function getCountries() {
+//            //
+//        }
+//        public function getGrades() {
+//            //
+//        }
+//        public function getTypes() {
+//            //
+//        }
 
 }
