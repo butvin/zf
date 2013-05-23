@@ -33,4 +33,9 @@ class ItemController extends Zend_Controller_Action {
             }
         }
     }
+    public function editAction() {
+        $form = new Application_Form_Item();
+        $form->submit->setLabel('Edit');
+        $this->view = $form;
+    }
 }

@@ -32,13 +32,9 @@ form #submitbutton {
     margin-left: 100px;
 }
 
-table
-{
-    border-collapse:collapse;
-}
-table,th, td
-{
-    border: 1px solid #ccced7;
+table#albums {
+    width: 600px;
+    /*border: 1px solid #000000 !important;*/
 }
 
 a {
