@@ -34,3 +34,7 @@ $this->headTitle($this->title);
         </tr>
     <?php endforeach; ?>
 </table>
+
+<button autofocus="next"><a href="<?php echo $this->url(array('controller' => 'item', 'action' => 'add')) ?>">Add item</a></button>
+<button accesskey="1" onclick="alert('Зачем нажал кнопку 1')">1</button>
+<input required placeholder="NAME">

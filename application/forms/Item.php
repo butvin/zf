@@ -122,7 +122,7 @@ class Application_Form_Item extends Zend_Form {
 
         $notes = new Zend_Form_Element_Textarea('notes');
         $notes->setLabel('Descriptions:')
-            ->setOptions(array('rows'=> '15', 'cols'=>'60'))
+            ->setOptions(array('rows'=> '5', 'cols'=>'60'))
             ->setRequired(true)
             ->addFilter('HtmlEntities')
             ->addFilter('StripTags')
