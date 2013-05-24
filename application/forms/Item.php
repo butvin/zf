@@ -2,9 +2,8 @@
 class Application_Form_Item extends Zend_Form {
         public function init() {
         $this
-//            ->setAction('/catalog/item/create')
-            ->setMethod('post')
-            ->setAttrib('id', 'add-item');
+//            ->setMethod('post')
+            ->setAttrib('id', 'items');
 
         $id = new Zend_Form_Element_Hidden('id');
         $id->addFilter('Int');

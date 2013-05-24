@@ -5,6 +5,7 @@ $this->headTitle($this->title);
 
 <table>
     <tr>
+        <th>id</th>
         <th>Name</th>
         <th >Email</th>
         <th >Telephone</th>
@@ -17,6 +18,7 @@ $this->headTitle($this->title);
     </tr>
     <?php foreach($this->items as $item) : ?>
         <tr>
+            <td><?php echo $this->escape($item->id);?></td>
             <td><?php echo $this->escape($item->name);?></td>
             <td><?php echo $this->escape($item->email);?></td>
             <td><?php echo $this->escape($item->tel);?></td>
@@ -27,10 +29,10 @@ $this->headTitle($this->title);
             <td><?php echo $this->escape($item->priceMax);?></td>
             <td><?php echo $this->escape($item->notes);?></td>
 
-<!--            <td>-->
-<!--                <button><a href="--><?php //echo $this->url(array('controller'=>'index', 'action'=>'edit', 'id'=>$album->id));?><!--">Edit</a> </button>-->
+            <td>
+                <button><a href="<?php echo $this->url(array('controller'=>'item', 'action'=>'edit', 'id'=>$item->id));?>">Edit</a> </button>
 <!--                <button><a href="--><?php //echo $this->url(array('controller'=>'index', 'action'=>'delete', 'id'=>$album->id));?><!--">Delete</a></button>-->
-<!--            </td>-->
+            </td>
         </tr>
     <?php endforeach; ?>
 </table>

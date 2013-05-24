@@ -5,6 +5,7 @@ $this->headTitle($this->title);
 
 <table id="albums" class="table table-striped">
     <tr>
+        <th >ID</th>
         <th >Title</th>
         <th >Artist</th>
         <th >Year</th>
@@ -12,6 +13,7 @@ $this->headTitle($this->title);
     </tr>
     <?php foreach($this->albums as $album) : ?>
         <tr>
+            <td><?php echo $this->escape($album->id);?></td>
             <td><?php echo $this->escape($album->title);?></td>
             <td><?php echo $this->escape($album->artist);?></td>
             <td><?php echo $this->escape($album->year);?></td>

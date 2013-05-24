@@ -35,7 +35,46 @@ class ItemController extends Zend_Controller_Action {
     }
     public function editAction() {
         $form = new Application_Form_Item();
+//--------------------------------------------------------
+
+
+//--------------------------------------------------------
         $form->submit->setLabel('Edit');
-        $this->view = $form;
+        $this->view->form = $form;
+
+        if ($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost();
+
+            if ($form->isValid($data)) {
+                $id = (int)$form->getValue('id');
+                $name = $form->getValue('name');
+                $email = $form->getValue('email');
+                $tel = $form->getValue('tel');
+                $title =$form->getValue('title');
+                $year = $form->getValue('year');
+                $denomination = $form->getValue('denomination');
+                $priceMin = $form->getValue('priceMin');
+                $priceMax = $form->getValue('priceMax');
+                $notes = $form->getValue('notes');
+                $items = new Application_Model_DbTable_Items;
+                $items->updateItem($id, $name, $email, $tel, $title, $year, $denomination, $priceMin, $priceMax, $notes);
+                $this->_helper->redirector('index');
+            } else {
+                $form->populate($data);
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            if ($id > 0) {
+                $items = new Application_Model_DbTable_Items;
+                $this->view->item = $items->getItem($id);
+                $form->populate($items->getItem($id));
+            }
+        }
+    }
+    public function deleteItem() {
+        if ($this->getRequest()->isPost()) {
+
+        }
+
     }
 }
