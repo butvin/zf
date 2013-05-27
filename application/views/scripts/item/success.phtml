@@ -1,0 +1,13 @@
+<h2>
+    Success
+</h2>
+
+<?php //echo implode($this->messages) ; ?>
+<?php
+// this goes inside the controller
+// this will reload the same page every 10 seconds
+//$this->view->headMeta()->appendHttpEquiv('refresh','10');
+// this will reload another page after 5 seconds
+//header('Location: /');
+header( "refresh:2; url=/item/index" );
+?>

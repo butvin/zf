@@ -27,7 +27,7 @@ class ItemController extends Zend_Controller_Action {
                 $notes = $form->getValue('notes');
                 $items = new Application_Model_DbTable_Items;
                 $items->addItem($name, $email, $tel, $title, $year, $denomination, $priceMin, $priceMax, $notes);
-                $this->_helper->redirector('index');
+                $this->_helper->redirector('success');
             } else {
                 $form->populate($data);
             }
@@ -86,5 +86,15 @@ class ItemController extends Zend_Controller_Action {
             $items = new Application_Model_DbTable_Items();
             $this->view->item = $items->getItem($id);
         }
+    }
+    public function successAction() {
+        $flashMessenger = $this->_helper->getHelper('FlashMessenger');
+        $flashMessenger->addMessage('We did something in the last request');
+        $this->view->messages = $flashMessenger;
+//        if ($this->_helper->getHelper('FlashMessenger')->getMessages()) {
+//            $this->view->messages = $this->_helper->getHelper('FlashMessenger')->getMessages();
+//        } else {
+////            $this->_redirect('/');
+//        }
     }
 }
