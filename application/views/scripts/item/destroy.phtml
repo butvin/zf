@@ -1,0 +1,14 @@
+<?php
+$this->title = "Destroy item";
+$this->headTitle($this->title);
+?>
+<p>Are you sure that you want to destroy item, where ID is:
+    <?php echo $this->escape($this->item['id']); ?>
+</p>
+<form action="<?php echo $this->url(array('action'=>'destroy')); ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo $this->item['id']; ?>" />
+        <input type="submit" name="destroy" value="Yes" />
+        <input type="submit" name="destroy" value="No" />
+    </div>
+</form>
