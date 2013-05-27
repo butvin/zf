@@ -4,6 +4,14 @@ body,html {
     font-family: Verdana,sans-serif;
     font-size: 12px;
 }
+
+body {
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+}
+
 h1 {
     font-size: 1.4em;
     color: #008000;
@@ -75,4 +83,7 @@ div#contact-form {
 
 form#album {
     display: table;
+}
+div#content {
+    padding: 10px;
 }
