@@ -132,7 +132,8 @@ class Application_Form_Item extends Zend_Form {
             ->setOrder(100)
             ->setOptions(array('class' => 'submit'));
 
-        $this->addElement($name)
+        $this->addElement($id)
+            ->addElement($name)
             ->addElement($email)
             ->addElement($tel);
 

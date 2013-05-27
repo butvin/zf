@@ -71,10 +71,20 @@ class ItemController extends Zend_Controller_Action {
             }
         }
     }
-    public function deleteItem() {
+    public function destroyAction() {
         if ($this->getRequest()->isPost()) {
-
+            $destroy = $this->getRequest()->getPost('destroy');
+            if ($destroy == 'Yes') {
+                $id = $this->getRequest()->getPost('id');
+//                var_dump($id); die();
+                $items = new Application_Model_DbTable_Items();
+                $items->deleteItem($id);
+            }
+            $this->_helper->redirector('index');
+        } else {
+            $id = $this->_getParam('id', 0);
+            $items = new Application_Model_DbTable_Items();
+            $this->view->item = $items->getItem($id);
         }
-
     }
 }
